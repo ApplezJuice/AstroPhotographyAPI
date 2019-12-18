@@ -6,6 +6,10 @@ using System.Net;
 
 namespace AstroPhotographyAPI.Models
 {
+    public class CloudDataJson
+    {
+        public Dictionary<string, List<CloudData>> cloudData { get; set; }
+    }
     public class CloudData
     {
         public int Day { get; set; }

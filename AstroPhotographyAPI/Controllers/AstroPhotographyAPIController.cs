@@ -54,11 +54,14 @@ namespace AstroPhotographyAPI.Controllers
         [HttpGet("/api/v1/GetCloudCoverData")]
         public async Task<IActionResult> GetCloudData()
         {
+            CloudDataJson cloudDataJson = new CloudDataJson();
+            cloudDataJson.cloudData = new Dictionary<string, List<CloudData>>();
+
             var date = System.IO.File.GetCreationTime("cloudData.json");
             var timeNow = DateTime.Now.Hour;
 
             // Check if it has been 12 hours to regen
-            if ((timeNow - date.Hour) < 12)
+            if ((timeNow - date.Hour) < 0)
             {
                 // Do not regen
                 var jsonString = System.IO.File.ReadAllText("cloudData.json");
@@ -79,14 +82,21 @@ namespace AstroPhotographyAPI.Controllers
 
                 DateTime time = DateTime.Now;
                 string generatedString = time.Year.ToString() + time.Month.ToString() + time.Day.ToString() + "12";
+                
                 // convert to UTC before passing, so if you want 5PM (1700) (+8 then -12) subtract 4 so 13
                 var day = time.Day;
                 var timeToPrint = time.Hour;
+
                 var inc = (time.Hour - 4);
 
                 for (int i = inc; i < 49; i++)
                 {
                     string timeToGet = i.ToString();
+
+                    if (i < 10)
+                    {
+                        timeToGet = "0" + i.ToString();
+                    }
 
                     var anzaColor = CloudData.GetAnzaRGBA(generatedString, timeToGet);
                     var cloudCover = CloudData.CloudCoverData(anzaColor);
@@ -107,11 +117,48 @@ namespace AstroPhotographyAPI.Controllers
                         RGBa = cloudCover.Item1
                     });
 
+                    if(cloudDataJson.cloudData.ContainsKey(time.Year + "/" + time.Month + "/" + day))
+                    {
+                        // item exists already
+                        foreach (var item in cloudDataJson.cloudData)
+                        {
+                            if (item.Key == (time.Year + "/" + time.Month + "/" + day))
+                            {
+                                item.Value.Add(new CloudData()
+                                {
+                                    Day = day,
+                                    Month = time.Month,
+                                    Year = time.Year,
+                                    Hour = timeToPrint,
+                                    CloudCover = cloudCover.Item2,
+                                    RGBa = cloudCover.Item1
+                                });
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // create new key pair
+                        List<CloudData> newItem = new List<CloudData>();
+                        newItem.Add(new CloudData()
+                        {
+                            Day = day,
+                            Month = time.Month,
+                            Year = time.Year,
+                            Hour = timeToPrint,
+                            CloudCover = cloudCover.Item2,
+                            RGBa = cloudCover.Item1
+                        });
+
+                        cloudDataJson.cloudData.Add((time.Year + "/" + time.Month + "/" + day), newItem);
+
+
+                    }
                     //Console.WriteLine(time.Month.ToString() + "/" + day + "/" + time.Year + " Time: " + timeToPrint + ":00" + " " + cloudCover.Item2);
                     timeToPrint++;
                 }
 
-                string json = JsonConvert.SerializeObject(_data.ToArray(), Formatting.Indented);
+                string json = JsonConvert.SerializeObject(cloudDataJson.cloudData, Formatting.Indented);
 
                 // write string to file
                 System.IO.File.WriteAllText("cloudData.json", json);
