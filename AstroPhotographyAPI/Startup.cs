@@ -36,7 +36,7 @@ namespace AstroPhotographyAPI
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "RS Applez GrandExchange API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "AstroPhotography API", Version = "v1" });
             });
 
             services.AddScoped<IPhoto, SQLPhotoRepository>();
