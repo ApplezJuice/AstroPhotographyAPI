@@ -49,40 +49,18 @@ namespace AstroPhotographyAPI.Controllers
 
             return Ok();
         }
-
         [EnableCors("AllowOrigin")]
-        [HttpGet("/api/v1/GetCloudCoverData")]
-        public async Task<IActionResult> GetCloudData()
+        [HttpGet("/api/v1/GenerateCloudData")]
+        public async Task<IActionResult> GenCloudData()
         {
             CloudDataJson cloudDataJson = new CloudDataJson();
             cloudDataJson.cloudData = new Dictionary<string, List<CloudData>>();
 
-            var date = System.IO.File.GetCreationTime("cloudData.json");
-            var timeNow = DateTime.Now.Hour;
-
-            // Check if it has been 12 hours to regen
-            if ((timeNow - date.Hour) < 12)
-            {
-                // Do not regen
-                string jsonString = System.IO.File.ReadAllText("cloudData.json");
-                //CloudData[] dataList = JsonConvert.DeserializeObject<CloudData[]>(jsonString);
-
-                List<string> listOfData = new List<string>();
-
-                //foreach (var item in dataList)
-                //{
-                //    listOfData.Add(item.Month.ToString() + "/" + item.Day.ToString() + "/" + item.Year.ToString() + " - " + "Time: " + item.Hour + " - " + item.CloudCover);
-                //}
-
-                return Ok(jsonString);
-            }
-            else
-            {
-                List<CloudData> _data = new List<CloudData>();
+            List<CloudData> _data = new List<CloudData>();
 
                 DateTime time = DateTime.Now;
                 string generatedString = time.Year.ToString() + time.Month.ToString() + time.Day.ToString() + "12";
-                
+
                 // convert to UTC before passing, so if you want 5PM (1700) (+8 then -12) subtract 4 so 13
                 var day = time.Day;
                 var timeToPrint = time.Hour;
@@ -117,7 +95,7 @@ namespace AstroPhotographyAPI.Controllers
                         RGBa = cloudCover.Item1
                     });
 
-                    if(cloudDataJson.cloudData.ContainsKey(time.Year + "/" + time.Month + "/" + day))
+                    if (cloudDataJson.cloudData.ContainsKey(time.Year + "/" + time.Month + "/" + day))
                     {
                         // item exists already
                         foreach (var item in cloudDataJson.cloudData)
@@ -171,7 +149,15 @@ namespace AstroPhotographyAPI.Controllers
                 }
 
                 return Ok(cloudDataJson.cloudData);
-            }
+        }
+
+        [EnableCors("AllowOrigin")]
+        [HttpGet("/api/v1/GetCloudCoverData")]
+        public async Task<IActionResult> GetCloudData()
+        {
+            string jsonString = System.IO.File.ReadAllText("cloudData.json");
+
+            return Ok(jsonString);
         }
     }
 }
