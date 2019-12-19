@@ -61,20 +61,20 @@ namespace AstroPhotographyAPI.Controllers
             var timeNow = DateTime.Now.Hour;
 
             // Check if it has been 12 hours to regen
-            if ((timeNow - date.Hour) < 0)
+            if ((timeNow - date.Hour) < 12)
             {
                 // Do not regen
-                var jsonString = System.IO.File.ReadAllText("cloudData.json");
-                CloudData[] dataList = JsonConvert.DeserializeObject<CloudData[]>(jsonString);
+                string jsonString = System.IO.File.ReadAllText("cloudData.json");
+                //CloudData[] dataList = JsonConvert.DeserializeObject<CloudData[]>(jsonString);
 
                 List<string> listOfData = new List<string>();
 
-                foreach (var item in dataList)
-                {
-                    listOfData.Add(item.Month.ToString() + "/" + item.Day.ToString() + "/" + item.Year.ToString() + " - " + "Time: " + item.Hour + " - " + item.CloudCover);
-                }
+                //foreach (var item in dataList)
+                //{
+                //    listOfData.Add(item.Month.ToString() + "/" + item.Day.ToString() + "/" + item.Year.ToString() + " - " + "Time: " + item.Hour + " - " + item.CloudCover);
+                //}
 
-                return Ok(listOfData);
+                return Ok(jsonString);
             }
             else
             {
@@ -170,7 +170,7 @@ namespace AstroPhotographyAPI.Controllers
                     listOfData.Add(item.Month.ToString() + "/" + item.Day.ToString() + "/" + item.Year.ToString() + " - " + "Time: " + item.Hour + " - " + item.CloudCover);
                 }
 
-                return Ok(listOfData);
+                return Ok(cloudDataJson.cloudData);
             }
         }
     }
