@@ -17,9 +17,11 @@ namespace AstroPhotographyAPI.Models
         public int Year { get; set; }
         public int Hour { get; set; }
         public string CloudCover { get; set; }
+        public string TransparencyCover { get; set; }
+        public Rgba32 TransparencyRGBa { get; set; }
         public Rgba32 RGBa { get; set; }
 
-        public static Rgba32 GetAnzaRGBA(string dateString, string time)
+        public static Rgba32 GetAnzaCloudCoverRGBA(string dateString, string time)
         {
             string imagePath = GetImageFromURL($"https://weather.gc.ca/data/prog/regional/{dateString}/{dateString}_054_R1_north@america@southwest_I_ASTRO_nt_0{time}.png");
 
@@ -27,6 +29,20 @@ namespace AstroPhotographyAPI.Models
             {
                 //var size = image.Size();
                 var anzaColor = image[225, 479];
+
+                System.IO.File.Delete(imagePath);
+                return anzaColor;
+            }
+        }
+
+        public static Rgba32 GetAnzaTransparencyCoverRGBA(string dateString, string time)
+        {
+            string imagePath = GetImageFromURL($"https://weather.gc.ca/data/prog/regional/{dateString}/{dateString}_054_R1_north@america@astro_I_ASTRO_transp_0{time}.png");
+
+            using (Image<Rgba32> image = (Image<Rgba32>)Image.Load(imagePath))
+            {
+                //var size = image.Size();
+                var anzaColor = image[175, 514];
 
                 System.IO.File.Delete(imagePath);
                 return anzaColor;
@@ -43,6 +59,23 @@ namespace AstroPhotographyAPI.Models
 
                 return imageString;
             }
+        }
+
+        public static Tuple<Rgba32, string> TransparencyCoverData(Rgba32 input)
+        {
+            Dictionary<Rgba32, string> colorLegend = new Dictionary<Rgba32, string>();
+
+            colorLegend.Add(new Rgba32(254, 254, 254, 255), "Too Cloudy to forcast");
+            colorLegend.Add(new Rgba32(198, 198, 198, 255), "Poor");
+            colorLegend.Add(new Rgba32(148, 212, 212, 255), "Below Average");
+            colorLegend.Add(new Rgba32(98, 162, 226, 255), "Average");
+            colorLegend.Add(new Rgba32(43, 107, 171, 255), "Above Average");
+            colorLegend.Add(new Rgba32(0, 62, 126, 255), "Transparent");
+
+            string value;
+            colorLegend.TryGetValue(input, out value);
+
+            return Tuple.Create(input, value);
         }
 
         public static Tuple<Rgba32, string> CloudCoverData(Rgba32 input)
@@ -90,15 +123,10 @@ namespace AstroPhotographyAPI.Models
             colorLegend.Add(new Rgba32(3, 67, 131, 255), "5% Cover");
             colorLegend.Add(new Rgba32(0, 62, 126, 255), "2.5% - 0% Cover");
 
-            foreach (var color in colorLegend)
-            {
-                if (color.Key == input)
-                {
-                    return Tuple.Create(color.Key, color.Value);
-                }
-            }
+            string value;
+            colorLegend.TryGetValue(input, out value);
 
-            return Tuple.Create(new Rgba32(), "No color in legend");
+            return Tuple.Create(input, value);
         }
     }
 }

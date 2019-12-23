@@ -49,6 +49,7 @@ namespace AstroPhotographyAPI.Controllers
 
             return Ok();
         }
+
         [EnableCors("AllowOrigin")]
         [HttpGet("/api/v1/GenerateCloudData")]
         public async Task<IActionResult> GenCloudData()
@@ -57,117 +58,6 @@ namespace AstroPhotographyAPI.Controllers
             cloudDataJson.cloudData = new Dictionary<string, List<CloudData>>();
 
             List<CloudData> _data = new List<CloudData>();
-
-                DateTime time = DateTime.Now;
-                string generatedString = time.Year.ToString() + time.Month.ToString() + time.Day.ToString() + "12";
-
-                // convert to UTC before passing, so if you want 5PM (1700) (+8 then -12) subtract 4 so 13
-                var day = time.Day;
-                var timeToPrint = time.Hour;
-
-                var inc = (time.Hour - 4);
-
-                for (int i = inc; i < 49; i++)
-                {
-                    string timeToGet = i.ToString();
-
-                    if (i < 10)
-                    {
-                        timeToGet = "0" + i.ToString();
-                    }
-
-                    var anzaColor = CloudData.GetAnzaRGBA(generatedString, timeToGet);
-                    var cloudCover = CloudData.CloudCoverData(anzaColor);
-
-                    if ((i + 4) == 24 || (i + 4) == 48)
-                    {
-                        day++;
-                        timeToPrint = timeToPrint - 24;
-                    }
-
-                    _data.Add(new CloudData()
-                    {
-                        Day = day,
-                        Month = time.Month,
-                        Year = time.Year,
-                        Hour = timeToPrint,
-                        CloudCover = cloudCover.Item2,
-                        RGBa = cloudCover.Item1
-                    });
-
-                    if (cloudDataJson.cloudData.ContainsKey(time.Year + "/" + time.Month + "/" + day))
-                    {
-                        // item exists already
-                        foreach (var item in cloudDataJson.cloudData)
-                        {
-                            if (item.Key == (time.Year + "/" + time.Month + "/" + day))
-                            {
-                                item.Value.Add(new CloudData()
-                                {
-                                    Day = day,
-                                    Month = time.Month,
-                                    Year = time.Year,
-                                    Hour = timeToPrint,
-                                    CloudCover = cloudCover.Item2,
-                                    RGBa = cloudCover.Item1
-                                });
-                            }
-                        }
-                    }
-                    else
-                    {
-                        // create new key pair
-                        List<CloudData> newItem = new List<CloudData>();
-                        newItem.Add(new CloudData()
-                        {
-                            Day = day,
-                            Month = time.Month,
-                            Year = time.Year,
-                            Hour = timeToPrint,
-                            CloudCover = cloudCover.Item2,
-                            RGBa = cloudCover.Item1
-                        });
-
-                        cloudDataJson.cloudData.Add((time.Year + "/" + time.Month + "/" + day), newItem);
-
-
-                    }
-                    //Console.WriteLine(time.Month.ToString() + "/" + day + "/" + time.Year + " Time: " + timeToPrint + ":00" + " " + cloudCover.Item2);
-                    timeToPrint++;
-                }
-
-                string json = JsonConvert.SerializeObject(cloudDataJson.cloudData, Formatting.Indented);
-
-                // write string to file
-                System.IO.File.WriteAllText("cloudData.json", json);
-
-                List<string> listOfData = new List<string>();
-
-                foreach (var item in _data)
-                {
-                    listOfData.Add(item.Month.ToString() + "/" + item.Day.ToString() + "/" + item.Year.ToString() + " - " + "Time: " + item.Hour + " - " + item.CloudCover);
-                }
-
-                return Ok(cloudDataJson.cloudData);
-        }
-
-        [EnableCors("AllowOrigin")]
-        [HttpGet("/api/v1/GetCloudCoverData")]
-        public async Task<IActionResult> GetCloudData()
-        {
-            string jsonString = System.IO.File.ReadAllText("cloudData.json");
-
-            return Ok(jsonString);
-        }
-
-        [EnableCors("AllowOrigin")]
-        [HttpGet("/api/v1/GenerateTransparency")]
-        public async Task<IActionResult> GenTransparency()
-        {
-            TransparencyDataJson transparencyDataJson = new TransparencyDataJson();
-            transparencyDataJson.transparecnyData = new Dictionary<string, List<TransparencyData>>();
-
-            List<TransparencyData> _data = new List<TransparencyData>();
 
             DateTime time = DateTime.Now;
             string generatedString = time.Year.ToString() + time.Month.ToString() + time.Day.ToString() + "12";
@@ -187,8 +77,10 @@ namespace AstroPhotographyAPI.Controllers
                     timeToGet = "0" + i.ToString();
                 }
 
-                var anzaColor = TransparencyData.GetAnzaRGBA(generatedString, timeToGet);
-                var transparecnyCloudCover = TransparencyData.TransparencyCoverData(anzaColor);
+                var anzaColor = CloudData.GetAnzaCloudCoverRGBA(generatedString, timeToGet);
+                var cloudCover = CloudData.CloudCoverData(anzaColor);
+                var anzaTransparencyColor = CloudData.GetAnzaTransparencyCoverRGBA(generatedString, timeToGet);
+                var transparencyCover = CloudData.TransparencyCoverData(anzaTransparencyColor);
 
                 if ((i + 4) == 24 || (i + 4) == 48)
                 {
@@ -196,31 +88,35 @@ namespace AstroPhotographyAPI.Controllers
                     timeToPrint = timeToPrint - 24;
                 }
 
-                _data.Add(new TransparencyData()
+                _data.Add(new CloudData()
                 {
                     Day = day,
                     Month = time.Month,
                     Year = time.Year,
                     Hour = timeToPrint,
-                    TransparencyCover = transparecnyCloudCover.Item2,
-                    RGBa = transparecnyCloudCover.Item1
+                    TransparencyCover = transparencyCover.Item2,
+                    TransparencyRGBa= transparencyCover.Item1,
+                    CloudCover = cloudCover.Item2,
+                    RGBa = cloudCover.Item1
                 });
 
-                if (transparencyDataJson.transparecnyData.ContainsKey(time.Year + "/" + time.Month + "/" + day))
+                if (cloudDataJson.cloudData.ContainsKey(time.Year + "/" + time.Month + "/" + day))
                 {
                     // item exists already
-                    foreach (var item in transparencyDataJson.transparecnyData)
+                    foreach (var item in cloudDataJson.cloudData)
                     {
                         if (item.Key == (time.Year + "/" + time.Month + "/" + day))
                         {
-                            item.Value.Add(new TransparencyData()
+                            item.Value.Add(new CloudData()
                             {
                                 Day = day,
                                 Month = time.Month,
                                 Year = time.Year,
                                 Hour = timeToPrint,
-                                TransparencyCover = transparecnyCloudCover.Item2,
-                                RGBa = transparecnyCloudCover.Item1
+                                TransparencyCover = transparencyCover.Item2,
+                                TransparencyRGBa = transparencyCover.Item1,
+                                CloudCover = cloudCover.Item2,
+                                RGBa = cloudCover.Item1
                             });
                         }
                     }
@@ -228,18 +124,20 @@ namespace AstroPhotographyAPI.Controllers
                 else
                 {
                     // create new key pair
-                    List<TransparencyData> newItem = new List<TransparencyData>();
-                    newItem.Add(new TransparencyData()
+                    List<CloudData> newItem = new List<CloudData>();
+                    newItem.Add(new CloudData()
                     {
                         Day = day,
                         Month = time.Month,
                         Year = time.Year,
                         Hour = timeToPrint,
-                        TransparencyCover = transparecnyCloudCover.Item2,
-                        RGBa = transparecnyCloudCover.Item1
+                        TransparencyCover = transparencyCover.Item2,
+                        TransparencyRGBa = transparencyCover.Item1,
+                        CloudCover = cloudCover.Item2,
+                        RGBa = cloudCover.Item1
                     });
 
-                    transparencyDataJson.transparecnyData.Add((time.Year + "/" + time.Month + "/" + day), newItem);
+                    cloudDataJson.cloudData.Add((time.Year + "/" + time.Month + "/" + day), newItem);
 
 
                 }
@@ -247,26 +145,26 @@ namespace AstroPhotographyAPI.Controllers
                 timeToPrint++;
             }
 
-            string json = JsonConvert.SerializeObject(transparencyDataJson.transparecnyData, Formatting.Indented);
+            string json = JsonConvert.SerializeObject(cloudDataJson.cloudData, Formatting.Indented);
 
             // write string to file
-            System.IO.File.WriteAllText("transparencyData.json", json);
+            System.IO.File.WriteAllText("cloudData.json", json);
 
             List<string> listOfData = new List<string>();
 
             foreach (var item in _data)
             {
-                listOfData.Add(item.Month.ToString() + "/" + item.Day.ToString() + "/" + item.Year.ToString() + " - " + "Time: " + item.Hour + " - " + item.TransparencyCover);
+                listOfData.Add(item.Month.ToString() + "/" + item.Day.ToString() + "/" + item.Year.ToString() + " - " + "Time: " + item.Hour + " - " + item.CloudCover);
             }
 
-            return Ok(transparencyDataJson.transparecnyData);
+            return Ok(cloudDataJson.cloudData);
         }
 
         [EnableCors("AllowOrigin")]
-        [HttpGet("/api/v1/GetTransparencyData")]
-        public async Task<IActionResult> GetTranspData()
+        [HttpGet("/api/v1/GetCloudCoverData")]
+        public async Task<IActionResult> GetCloudData()
         {
-            string jsonString = System.IO.File.ReadAllText("transparencyData.json");
+            string jsonString = System.IO.File.ReadAllText("cloudData.json");
 
             return Ok(jsonString);
         }
