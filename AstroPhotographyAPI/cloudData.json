@@ -4,140 +4,8 @@
       "Day": 23,
       "Month": 12,
       "Year": 2019,
-      "Hour": 12,
-      "CloudCover": "100% Cover",
-      "TransparencyCover": "Too Cloudy to forcast",
-      "TransparencyRGBa": {
-        "R": 254,
-        "G": 254,
-        "B": 254,
-        "A": 255,
-        "Rgba": 4294901502,
-        "Rgb": {
-          "R": 254,
-          "G": 254,
-          "B": 254
-        },
-        "Bgr": {
-          "B": 254,
-          "G": 254,
-          "R": 254
-        },
-        "PackedValue": 4294901502
-      },
-      "RGBa": {
-        "R": 250,
-        "G": 250,
-        "B": 250,
-        "A": 255,
-        "Rgba": 4294638330,
-        "Rgb": {
-          "R": 250,
-          "G": 250,
-          "B": 250
-        },
-        "Bgr": {
-          "B": 250,
-          "G": 250,
-          "R": 250
-        },
-        "PackedValue": 4294638330
-      }
-    },
-    {
-      "Day": 23,
-      "Month": 12,
-      "Year": 2019,
-      "Hour": 13,
-      "CloudCover": "75% Cover",
-      "TransparencyCover": "Too Cloudy to forcast",
-      "TransparencyRGBa": {
-        "R": 254,
-        "G": 254,
-        "B": 254,
-        "A": 255,
-        "Rgba": 4294901502,
-        "Rgb": {
-          "R": 254,
-          "G": 254,
-          "B": 254
-        },
-        "Bgr": {
-          "B": 254,
-          "G": 254,
-          "R": 254
-        },
-        "PackedValue": 4294901502
-      },
-      "RGBa": {
-        "R": 178,
-        "G": 242,
-        "B": 242,
-        "A": 255,
-        "Rgba": 4294111922,
-        "Rgb": {
-          "R": 178,
-          "G": 242,
-          "B": 242
-        },
-        "Bgr": {
-          "B": 242,
-          "G": 242,
-          "R": 178
-        },
-        "PackedValue": 4294111922
-      }
-    },
-    {
-      "Day": 23,
-      "Month": 12,
-      "Year": 2019,
-      "Hour": 14,
-      "CloudCover": "75% Cover",
-      "TransparencyCover": "Too Cloudy to forcast",
-      "TransparencyRGBa": {
-        "R": 254,
-        "G": 254,
-        "B": 254,
-        "A": 255,
-        "Rgba": 4294901502,
-        "Rgb": {
-          "R": 254,
-          "G": 254,
-          "B": 254
-        },
-        "Bgr": {
-          "B": 254,
-          "G": 254,
-          "R": 254
-        },
-        "PackedValue": 4294901502
-      },
-      "RGBa": {
-        "R": 178,
-        "G": 242,
-        "B": 242,
-        "A": 255,
-        "Rgba": 4294111922,
-        "Rgb": {
-          "R": 178,
-          "G": 242,
-          "B": 242
-        },
-        "Bgr": {
-          "B": 242,
-          "G": 242,
-          "R": 178
-        },
-        "PackedValue": 4294111922
-      }
-    },
-    {
-      "Day": 23,
-      "Month": 12,
-      "Year": 2019,
       "Hour": 15,
-      "CloudCover": "72.5% Cover",
+      "CloudCover": "72.5%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -174,6 +42,25 @@
           "R": 173
         },
         "PackedValue": 4293782957
+      },
+      "SeeingCover": "Poor",
+      "SeeingRGBa": {
+        "R": 148,
+        "G": 212,
+        "B": 212,
+        "A": 255,
+        "Rgba": 4292138132,
+        "Rgb": {
+          "R": 148,
+          "G": 212,
+          "B": 212
+        },
+        "Bgr": {
+          "B": 212,
+          "G": 212,
+          "R": 148
+        },
+        "PackedValue": 4292138132
       }
     },
     {
@@ -181,7 +68,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 16,
-      "CloudCover": "87.5% Cover",
+      "CloudCover": "87.5%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -218,6 +105,25 @@
           "R": 218
         },
         "PackedValue": 4292532954
+      },
+      "SeeingCover": "Poor",
+      "SeeingRGBa": {
+        "R": 148,
+        "G": 212,
+        "B": 212,
+        "A": 255,
+        "Rgba": 4292138132,
+        "Rgb": {
+          "R": 148,
+          "G": 212,
+          "B": 212
+        },
+        "Bgr": {
+          "B": 212,
+          "G": 212,
+          "R": 148
+        },
+        "PackedValue": 4292138132
       }
     },
     {
@@ -225,7 +131,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 17,
-      "CloudCover": "2.5% - 0% Cover",
+      "CloudCover": "2.5% - 0%",
       "TransparencyCover": "Below Average",
       "TransparencyRGBa": {
         "R": 148,
@@ -262,6 +168,25 @@
           "R": 0
         },
         "PackedValue": 4286463488
+      },
+      "SeeingCover": "Poor",
+      "SeeingRGBa": {
+        "R": 148,
+        "G": 212,
+        "B": 212,
+        "A": 255,
+        "Rgba": 4292138132,
+        "Rgb": {
+          "R": 148,
+          "G": 212,
+          "B": 212
+        },
+        "Bgr": {
+          "B": 212,
+          "G": 212,
+          "R": 148
+        },
+        "PackedValue": 4292138132
       }
     },
     {
@@ -269,7 +194,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 18,
-      "CloudCover": "2.5% - 0% Cover",
+      "CloudCover": "2.5% - 0%",
       "TransparencyCover": "Below Average",
       "TransparencyRGBa": {
         "R": 148,
@@ -306,6 +231,25 @@
           "R": 0
         },
         "PackedValue": 4286463488
+      },
+      "SeeingCover": "Poor",
+      "SeeingRGBa": {
+        "R": 148,
+        "G": 212,
+        "B": 212,
+        "A": 255,
+        "Rgba": 4292138132,
+        "Rgb": {
+          "R": 148,
+          "G": 212,
+          "B": 212
+        },
+        "Bgr": {
+          "B": 212,
+          "G": 212,
+          "R": 148
+        },
+        "PackedValue": 4292138132
       }
     },
     {
@@ -313,7 +257,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 19,
-      "CloudCover": "7.5% Cover",
+      "CloudCover": "7.5%",
       "TransparencyCover": "Below Average",
       "TransparencyRGBa": {
         "R": 148,
@@ -350,6 +294,25 @@
           "R": 8
         },
         "PackedValue": 4287121416
+      },
+      "SeeingCover": "Poor",
+      "SeeingRGBa": {
+        "R": 148,
+        "G": 212,
+        "B": 212,
+        "A": 255,
+        "Rgba": 4292138132,
+        "Rgb": {
+          "R": 148,
+          "G": 212,
+          "B": 212
+        },
+        "Bgr": {
+          "B": 212,
+          "G": 212,
+          "R": 148
+        },
+        "PackedValue": 4292138132
       }
     },
     {
@@ -357,7 +320,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 20,
-      "CloudCover": "27.5% Cover",
+      "CloudCover": "27.5%",
       "TransparencyCover": "Below Average",
       "TransparencyRGBa": {
         "R": 148,
@@ -394,6 +357,25 @@
           "R": 48
         },
         "PackedValue": 4289753136
+      },
+      "SeeingCover": "Poor",
+      "SeeingRGBa": {
+        "R": 148,
+        "G": 212,
+        "B": 212,
+        "A": 255,
+        "Rgba": 4292138132,
+        "Rgb": {
+          "R": 148,
+          "G": 212,
+          "B": 212
+        },
+        "Bgr": {
+          "B": 212,
+          "G": 212,
+          "R": 148
+        },
+        "PackedValue": 4292138132
       }
     },
     {
@@ -401,7 +383,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 21,
-      "CloudCover": "57.5% Cover",
+      "CloudCover": "57.5%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -438,6 +420,25 @@
           "R": 128
         },
         "PackedValue": 4290822272
+      },
+      "SeeingCover": "Too Cloudy to forcast",
+      "SeeingRGBa": {
+        "R": 254,
+        "G": 254,
+        "B": 254,
+        "A": 255,
+        "Rgba": 4294901502,
+        "Rgb": {
+          "R": 254,
+          "G": 254,
+          "B": 254
+        },
+        "Bgr": {
+          "B": 254,
+          "G": 254,
+          "R": 254
+        },
+        "PackedValue": 4294901502
       }
     },
     {
@@ -445,7 +446,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 22,
-      "CloudCover": "100% Cover",
+      "CloudCover": "100%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -482,6 +483,25 @@
           "R": 250
         },
         "PackedValue": 4294638330
+      },
+      "SeeingCover": "Too Cloudy to forcast",
+      "SeeingRGBa": {
+        "R": 254,
+        "G": 254,
+        "B": 254,
+        "A": 255,
+        "Rgba": 4294901502,
+        "Rgb": {
+          "R": 254,
+          "G": 254,
+          "B": 254
+        },
+        "Bgr": {
+          "B": 254,
+          "G": 254,
+          "R": 254
+        },
+        "PackedValue": 4294901502
       }
     },
     {
@@ -489,7 +509,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 23,
-      "CloudCover": "100% Cover",
+      "CloudCover": "100%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -526,6 +546,25 @@
           "R": 250
         },
         "PackedValue": 4294638330
+      },
+      "SeeingCover": "Too Cloudy to forcast",
+      "SeeingRGBa": {
+        "R": 254,
+        "G": 254,
+        "B": 254,
+        "A": 255,
+        "Rgba": 4294901502,
+        "Rgb": {
+          "R": 254,
+          "G": 254,
+          "B": 254
+        },
+        "Bgr": {
+          "B": 254,
+          "G": 254,
+          "R": 254
+        },
+        "PackedValue": 4294901502
       }
     }
   ],
@@ -535,7 +574,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 0,
-      "CloudCover": "100% Cover",
+      "CloudCover": "100%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -572,6 +611,25 @@
           "R": 250
         },
         "PackedValue": 4294638330
+      },
+      "SeeingCover": "Too Cloudy to forcast",
+      "SeeingRGBa": {
+        "R": 254,
+        "G": 254,
+        "B": 254,
+        "A": 255,
+        "Rgba": 4294901502,
+        "Rgb": {
+          "R": 254,
+          "G": 254,
+          "B": 254
+        },
+        "Bgr": {
+          "B": 254,
+          "G": 254,
+          "R": 254
+        },
+        "PackedValue": 4294901502
       }
     },
     {
@@ -579,7 +637,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 1,
-      "CloudCover": "100% Cover",
+      "CloudCover": "100%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -616,6 +674,25 @@
           "R": 250
         },
         "PackedValue": 4294638330
+      },
+      "SeeingCover": "Too Cloudy to forcast",
+      "SeeingRGBa": {
+        "R": 254,
+        "G": 254,
+        "B": 254,
+        "A": 255,
+        "Rgba": 4294901502,
+        "Rgb": {
+          "R": 254,
+          "G": 254,
+          "B": 254
+        },
+        "Bgr": {
+          "B": 254,
+          "G": 254,
+          "R": 254
+        },
+        "PackedValue": 4294901502
       }
     },
     {
@@ -623,7 +700,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 2,
-      "CloudCover": "92.5% Cover",
+      "CloudCover": "92.5%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -660,6 +737,25 @@
           "R": 233
         },
         "PackedValue": 4293519849
+      },
+      "SeeingCover": "Too Cloudy to forcast",
+      "SeeingRGBa": {
+        "R": 254,
+        "G": 254,
+        "B": 254,
+        "A": 255,
+        "Rgba": 4294901502,
+        "Rgb": {
+          "R": 254,
+          "G": 254,
+          "B": 254
+        },
+        "Bgr": {
+          "B": 254,
+          "G": 254,
+          "R": 254
+        },
+        "PackedValue": 4294901502
       }
     },
     {
@@ -667,7 +763,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 3,
-      "CloudCover": "55% Cover",
+      "CloudCover": "55%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -704,6 +800,25 @@
           "R": 123
         },
         "PackedValue": 4294687611
+      },
+      "SeeingCover": "Poor",
+      "SeeingRGBa": {
+        "R": 148,
+        "G": 212,
+        "B": 212,
+        "A": 255,
+        "Rgba": 4292138132,
+        "Rgb": {
+          "R": 148,
+          "G": 212,
+          "B": 212
+        },
+        "Bgr": {
+          "B": 212,
+          "G": 212,
+          "R": 148
+        },
+        "PackedValue": 4292138132
       }
     },
     {
@@ -711,7 +826,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 4,
-      "CloudCover": "45% Cover",
+      "CloudCover": "45%",
       "TransparencyCover": "Below Average",
       "TransparencyRGBa": {
         "R": 148,
@@ -748,6 +863,25 @@
           "R": 103
         },
         "PackedValue": 4293371751
+      },
+      "SeeingCover": "Poor",
+      "SeeingRGBa": {
+        "R": 148,
+        "G": 212,
+        "B": 212,
+        "A": 255,
+        "Rgba": 4292138132,
+        "Rgb": {
+          "R": 148,
+          "G": 212,
+          "B": 212
+        },
+        "Bgr": {
+          "B": 212,
+          "G": 212,
+          "R": 148
+        },
+        "PackedValue": 4292138132
       }
     },
     {
@@ -755,7 +889,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 5,
-      "CloudCover": "40% Cover",
+      "CloudCover": "40%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -792,6 +926,25 @@
           "R": 93
         },
         "PackedValue": 4292713821
+      },
+      "SeeingCover": "Poor",
+      "SeeingRGBa": {
+        "R": 148,
+        "G": 212,
+        "B": 212,
+        "A": 255,
+        "Rgba": 4292138132,
+        "Rgb": {
+          "R": 148,
+          "G": 212,
+          "B": 212
+        },
+        "Bgr": {
+          "B": 212,
+          "G": 212,
+          "R": 148
+        },
+        "PackedValue": 4292138132
       }
     },
     {
@@ -799,7 +952,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 6,
-      "CloudCover": "45% Cover",
+      "CloudCover": "45%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -836,6 +989,25 @@
           "R": 103
         },
         "PackedValue": 4293371751
+      },
+      "SeeingCover": "Average",
+      "SeeingRGBa": {
+        "R": 98,
+        "G": 162,
+        "B": 226,
+        "A": 255,
+        "Rgba": 4293042786,
+        "Rgb": {
+          "R": 98,
+          "G": 162,
+          "B": 226
+        },
+        "Bgr": {
+          "B": 226,
+          "G": 162,
+          "R": 98
+        },
+        "PackedValue": 4293042786
       }
     },
     {
@@ -843,7 +1015,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 7,
-      "CloudCover": "57.5% Cover",
+      "CloudCover": "57.5%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -880,6 +1052,25 @@
           "R": 128
         },
         "PackedValue": 4290822272
+      },
+      "SeeingCover": "Average",
+      "SeeingRGBa": {
+        "R": 98,
+        "G": 162,
+        "B": 226,
+        "A": 255,
+        "Rgba": 4293042786,
+        "Rgb": {
+          "R": 98,
+          "G": 162,
+          "B": 226
+        },
+        "Bgr": {
+          "B": 226,
+          "G": 162,
+          "R": 98
+        },
+        "PackedValue": 4293042786
       }
     },
     {
@@ -887,7 +1078,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 8,
-      "CloudCover": "72.5% Cover",
+      "CloudCover": "72.5%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -924,6 +1115,25 @@
           "R": 173
         },
         "PackedValue": 4293782957
+      },
+      "SeeingCover": "Average",
+      "SeeingRGBa": {
+        "R": 98,
+        "G": 162,
+        "B": 226,
+        "A": 255,
+        "Rgba": 4293042786,
+        "Rgb": {
+          "R": 98,
+          "G": 162,
+          "B": 226
+        },
+        "Bgr": {
+          "B": 226,
+          "G": 162,
+          "R": 98
+        },
+        "PackedValue": 4293042786
       }
     },
     {
@@ -931,7 +1141,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 9,
-      "CloudCover": "55% Cover",
+      "CloudCover": "55%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -968,6 +1178,25 @@
           "R": 123
         },
         "PackedValue": 4294687611
+      },
+      "SeeingCover": "Bad",
+      "SeeingRGBa": {
+        "R": 198,
+        "G": 198,
+        "B": 198,
+        "A": 255,
+        "Rgba": 4291217094,
+        "Rgb": {
+          "R": 198,
+          "G": 198,
+          "B": 198
+        },
+        "Bgr": {
+          "B": 198,
+          "G": 198,
+          "R": 198
+        },
+        "PackedValue": 4291217094
       }
     },
     {
@@ -975,7 +1204,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 10,
-      "CloudCover": "25% Cover",
+      "CloudCover": "25%",
       "TransparencyCover": "Average",
       "TransparencyRGBa": {
         "R": 98,
@@ -1012,6 +1241,25 @@
           "R": 43
         },
         "PackedValue": 4289424171
+      },
+      "SeeingCover": "Bad",
+      "SeeingRGBa": {
+        "R": 198,
+        "G": 198,
+        "B": 198,
+        "A": 255,
+        "Rgba": 4291217094,
+        "Rgb": {
+          "R": 198,
+          "G": 198,
+          "B": 198
+        },
+        "Bgr": {
+          "B": 198,
+          "G": 198,
+          "R": 198
+        },
+        "PackedValue": 4291217094
       }
     },
     {
@@ -1019,7 +1267,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 11,
-      "CloudCover": "10% Cover",
+      "CloudCover": "10%",
       "TransparencyCover": "Average",
       "TransparencyRGBa": {
         "R": 98,
@@ -1056,6 +1304,25 @@
           "R": 13
         },
         "PackedValue": 4287450381
+      },
+      "SeeingCover": "Bad",
+      "SeeingRGBa": {
+        "R": 198,
+        "G": 198,
+        "B": 198,
+        "A": 255,
+        "Rgba": 4291217094,
+        "Rgb": {
+          "R": 198,
+          "G": 198,
+          "B": 198
+        },
+        "Bgr": {
+          "B": 198,
+          "G": 198,
+          "R": 198
+        },
+        "PackedValue": 4291217094
       }
     },
     {
@@ -1063,7 +1330,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 12,
-      "CloudCover": "5% Cover",
+      "CloudCover": "5%",
       "TransparencyCover": "Poor",
       "TransparencyRGBa": {
         "R": 198,
@@ -1100,6 +1367,25 @@
           "R": 3
         },
         "PackedValue": 4286792451
+      },
+      "SeeingCover": "Poor",
+      "SeeingRGBa": {
+        "R": 148,
+        "G": 212,
+        "B": 212,
+        "A": 255,
+        "Rgba": 4292138132,
+        "Rgb": {
+          "R": 148,
+          "G": 212,
+          "B": 212
+        },
+        "Bgr": {
+          "B": 212,
+          "G": 212,
+          "R": 148
+        },
+        "PackedValue": 4292138132
       }
     },
     {
@@ -1107,7 +1393,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 13,
-      "CloudCover": "30% Cover",
+      "CloudCover": "30%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -1144,6 +1430,25 @@
           "R": 68
         },
         "PackedValue": 4291068996
+      },
+      "SeeingCover": "Poor",
+      "SeeingRGBa": {
+        "R": 148,
+        "G": 212,
+        "B": 212,
+        "A": 255,
+        "Rgba": 4292138132,
+        "Rgb": {
+          "R": 148,
+          "G": 212,
+          "B": 212
+        },
+        "Bgr": {
+          "B": 212,
+          "G": 212,
+          "R": 148
+        },
+        "PackedValue": 4292138132
       }
     },
     {
@@ -1151,7 +1456,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 14,
-      "CloudCover": "32.5% Cover",
+      "CloudCover": "32.5%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -1188,6 +1493,25 @@
           "R": 78
         },
         "PackedValue": 4291726926
+      },
+      "SeeingCover": "Poor",
+      "SeeingRGBa": {
+        "R": 148,
+        "G": 212,
+        "B": 212,
+        "A": 255,
+        "Rgba": 4292138132,
+        "Rgb": {
+          "R": 148,
+          "G": 212,
+          "B": 212
+        },
+        "Bgr": {
+          "B": 212,
+          "G": 212,
+          "R": 148
+        },
+        "PackedValue": 4292138132
       }
     },
     {
@@ -1195,7 +1519,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 15,
-      "CloudCover": "45% Cover",
+      "CloudCover": "45%",
       "TransparencyCover": "Poor",
       "TransparencyRGBa": {
         "R": 198,
@@ -1232,6 +1556,25 @@
           "R": 103
         },
         "PackedValue": 4293371751
+      },
+      "SeeingCover": "Bad",
+      "SeeingRGBa": {
+        "R": 198,
+        "G": 198,
+        "B": 198,
+        "A": 255,
+        "Rgba": 4291217094,
+        "Rgb": {
+          "R": 198,
+          "G": 198,
+          "B": 198
+        },
+        "Bgr": {
+          "B": 198,
+          "G": 198,
+          "R": 198
+        },
+        "PackedValue": 4291217094
       }
     },
     {
@@ -1239,7 +1582,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 16,
-      "CloudCover": "10% Cover",
+      "CloudCover": "10%",
       "TransparencyCover": "Poor",
       "TransparencyRGBa": {
         "R": 198,
@@ -1276,6 +1619,25 @@
           "R": 13
         },
         "PackedValue": 4287450381
+      },
+      "SeeingCover": "Bad",
+      "SeeingRGBa": {
+        "R": 198,
+        "G": 198,
+        "B": 198,
+        "A": 255,
+        "Rgba": 4291217094,
+        "Rgb": {
+          "R": 198,
+          "G": 198,
+          "B": 198
+        },
+        "Bgr": {
+          "B": 198,
+          "G": 198,
+          "R": 198
+        },
+        "PackedValue": 4291217094
       }
     },
     {
@@ -1283,7 +1645,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 17,
-      "CloudCover": "60% Cover",
+      "CloudCover": "60%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -1320,6 +1682,25 @@
           "R": 148
         },
         "PackedValue": 4292138132
+      },
+      "SeeingCover": "Bad",
+      "SeeingRGBa": {
+        "R": 198,
+        "G": 198,
+        "B": 198,
+        "A": 255,
+        "Rgba": 4291217094,
+        "Rgb": {
+          "R": 198,
+          "G": 198,
+          "B": 198
+        },
+        "Bgr": {
+          "B": 198,
+          "G": 198,
+          "R": 198
+        },
+        "PackedValue": 4291217094
       }
     },
     {
@@ -1327,7 +1708,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 18,
-      "CloudCover": "85% Cover",
+      "CloudCover": "85%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -1364,6 +1745,25 @@
           "R": 203
         },
         "PackedValue": 4291546059
+      },
+      "SeeingCover": "Too Cloudy to forcast",
+      "SeeingRGBa": {
+        "R": 254,
+        "G": 254,
+        "B": 254,
+        "A": 255,
+        "Rgba": 4294901502,
+        "Rgb": {
+          "R": 254,
+          "G": 254,
+          "B": 254
+        },
+        "Bgr": {
+          "B": 254,
+          "G": 254,
+          "R": 254
+        },
+        "PackedValue": 4294901502
       }
     },
     {
@@ -1371,7 +1771,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 19,
-      "CloudCover": "92.5% Cover",
+      "CloudCover": "92.5%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -1408,6 +1808,25 @@
           "R": 233
         },
         "PackedValue": 4293519849
+      },
+      "SeeingCover": "Too Cloudy to forcast",
+      "SeeingRGBa": {
+        "R": 254,
+        "G": 254,
+        "B": 254,
+        "A": 255,
+        "Rgba": 4294901502,
+        "Rgb": {
+          "R": 254,
+          "G": 254,
+          "B": 254
+        },
+        "Bgr": {
+          "B": 254,
+          "G": 254,
+          "R": 254
+        },
+        "PackedValue": 4294901502
       }
     },
     {
@@ -1415,7 +1834,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 20,
-      "CloudCover": "95% Cover",
+      "CloudCover": "95%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -1452,6 +1871,25 @@
           "R": 238
         },
         "PackedValue": 4293848814
+      },
+      "SeeingCover": "Too Cloudy to forcast",
+      "SeeingRGBa": {
+        "R": 254,
+        "G": 254,
+        "B": 254,
+        "A": 255,
+        "Rgba": 4294901502,
+        "Rgb": {
+          "R": 254,
+          "G": 254,
+          "B": 254
+        },
+        "Bgr": {
+          "B": 254,
+          "G": 254,
+          "R": 254
+        },
+        "PackedValue": 4294901502
       }
     },
     {
@@ -1459,7 +1897,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 21,
-      "CloudCover": "97.5% Cover",
+      "CloudCover": "97.5%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -1496,6 +1934,25 @@
           "R": 248
         },
         "PackedValue": 4294506744
+      },
+      "SeeingCover": "Too Cloudy to forcast",
+      "SeeingRGBa": {
+        "R": 254,
+        "G": 254,
+        "B": 254,
+        "A": 255,
+        "Rgba": 4294901502,
+        "Rgb": {
+          "R": 254,
+          "G": 254,
+          "B": 254
+        },
+        "Bgr": {
+          "B": 254,
+          "G": 254,
+          "R": 254
+        },
+        "PackedValue": 4294901502
       }
     },
     {
@@ -1503,7 +1960,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 22,
-      "CloudCover": "97.5% Cover",
+      "CloudCover": "97.5%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -1540,6 +1997,25 @@
           "R": 248
         },
         "PackedValue": 4294506744
+      },
+      "SeeingCover": "Too Cloudy to forcast",
+      "SeeingRGBa": {
+        "R": 254,
+        "G": 254,
+        "B": 254,
+        "A": 255,
+        "Rgba": 4294901502,
+        "Rgb": {
+          "R": 254,
+          "G": 254,
+          "B": 254
+        },
+        "Bgr": {
+          "B": 254,
+          "G": 254,
+          "R": 254
+        },
+        "PackedValue": 4294901502
       }
     },
     {
@@ -1547,7 +2023,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 23,
-      "CloudCover": "100% Cover",
+      "CloudCover": "100%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -1584,6 +2060,25 @@
           "R": 250
         },
         "PackedValue": 4294638330
+      },
+      "SeeingCover": "Too Cloudy to forcast",
+      "SeeingRGBa": {
+        "R": 254,
+        "G": 254,
+        "B": 254,
+        "A": 255,
+        "Rgba": 4294901502,
+        "Rgb": {
+          "R": 254,
+          "G": 254,
+          "B": 254
+        },
+        "Bgr": {
+          "B": 254,
+          "G": 254,
+          "R": 254
+        },
+        "PackedValue": 4294901502
       }
     }
   ],
@@ -1593,7 +2088,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 0,
-      "CloudCover": "100% Cover",
+      "CloudCover": "100%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -1630,6 +2125,25 @@
           "R": 250
         },
         "PackedValue": 4294638330
+      },
+      "SeeingCover": "Too Cloudy to forcast",
+      "SeeingRGBa": {
+        "R": 254,
+        "G": 254,
+        "B": 254,
+        "A": 255,
+        "Rgba": 4294901502,
+        "Rgb": {
+          "R": 254,
+          "G": 254,
+          "B": 254
+        },
+        "Bgr": {
+          "B": 254,
+          "G": 254,
+          "R": 254
+        },
+        "PackedValue": 4294901502
       }
     },
     {
@@ -1637,7 +2151,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 1,
-      "CloudCover": "97.5% Cover",
+      "CloudCover": "97.5%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -1674,6 +2188,25 @@
           "R": 248
         },
         "PackedValue": 4294506744
+      },
+      "SeeingCover": "Too Cloudy to forcast",
+      "SeeingRGBa": {
+        "R": 254,
+        "G": 254,
+        "B": 254,
+        "A": 255,
+        "Rgba": 4294901502,
+        "Rgb": {
+          "R": 254,
+          "G": 254,
+          "B": 254
+        },
+        "Bgr": {
+          "B": 254,
+          "G": 254,
+          "R": 254
+        },
+        "PackedValue": 4294901502
       }
     },
     {
@@ -1681,7 +2214,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 2,
-      "CloudCover": "100% Cover",
+      "CloudCover": "100%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -1718,6 +2251,25 @@
           "R": 250
         },
         "PackedValue": 4294638330
+      },
+      "SeeingCover": "Too Cloudy to forcast",
+      "SeeingRGBa": {
+        "R": 254,
+        "G": 254,
+        "B": 254,
+        "A": 255,
+        "Rgba": 4294901502,
+        "Rgb": {
+          "R": 254,
+          "G": 254,
+          "B": 254
+        },
+        "Bgr": {
+          "B": 254,
+          "G": 254,
+          "R": 254
+        },
+        "PackedValue": 4294901502
       }
     },
     {
@@ -1725,7 +2277,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 3,
-      "CloudCover": "82.5% Cover",
+      "CloudCover": "82.5%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -1762,6 +2314,25 @@
           "R": 193
         },
         "PackedValue": 4290888129
+      },
+      "SeeingCover": "Bad",
+      "SeeingRGBa": {
+        "R": 198,
+        "G": 198,
+        "B": 198,
+        "A": 255,
+        "Rgba": 4291217094,
+        "Rgb": {
+          "R": 198,
+          "G": 198,
+          "B": 198
+        },
+        "Bgr": {
+          "B": 198,
+          "G": 198,
+          "R": 198
+        },
+        "PackedValue": 4291217094
       }
     },
     {
@@ -1769,7 +2340,7 @@
       "Month": 12,
       "Year": 2019,
       "Hour": 4,
-      "CloudCover": "82.5% Cover",
+      "CloudCover": "82.5%",
       "TransparencyCover": "Too Cloudy to forcast",
       "TransparencyRGBa": {
         "R": 254,
@@ -1806,6 +2377,25 @@
           "R": 193
         },
         "PackedValue": 4290888129
+      },
+      "SeeingCover": "Bad",
+      "SeeingRGBa": {
+        "R": 198,
+        "G": 198,
+        "B": 198,
+        "A": 255,
+        "Rgba": 4291217094,
+        "Rgb": {
+          "R": 198,
+          "G": 198,
+          "B": 198
+        },
+        "Bgr": {
+          "B": 198,
+          "G": 198,
+          "R": 198
+        },
+        "PackedValue": 4291217094
       }
     }
   ]

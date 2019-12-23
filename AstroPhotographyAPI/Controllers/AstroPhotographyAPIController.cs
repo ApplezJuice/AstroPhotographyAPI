@@ -63,24 +63,43 @@ namespace AstroPhotographyAPI.Controllers
             string generatedString = time.Year.ToString() + time.Month.ToString() + time.Day.ToString() + "12";
 
             // convert to UTC before passing, so if you want 5PM (1700) (+8 then -12) subtract 4 so 13
+            // 1500 current day needs to be 12
             var day = time.Day;
             var timeToPrint = time.Hour;
+            string timeToSendForSeeing;
 
             var inc = (time.Hour - 4);
 
             for (int i = inc; i < 49; i++)
             {
                 string timeToGet = i.ToString();
+                var timeForSeeing = i+4;
+
+                if (timeForSeeing % 3 == 0)
+                {
+                    timeForSeeing -= 3;
+                    timeToSendForSeeing = timeForSeeing.ToString();
+                }
+                else
+                {
+                    // not in the 3 hour block
+                    var timeToRemove = timeForSeeing % 3;
+                    timeToSendForSeeing = ((timeForSeeing - timeToRemove) - 3).ToString();
+                }
 
                 if (i < 10)
                 {
                     timeToGet = "0" + i.ToString();
+                    timeToSendForSeeing = "0" + timeToSendForSeeing;
                 }
 
                 var anzaColor = CloudData.GetAnzaCloudCoverRGBA(generatedString, timeToGet);
                 var cloudCover = CloudData.CloudCoverData(anzaColor);
                 var anzaTransparencyColor = CloudData.GetAnzaTransparencyCoverRGBA(generatedString, timeToGet);
                 var transparencyCover = CloudData.TransparencyCoverData(anzaTransparencyColor);
+
+                var anzaSeeingColor = CloudData.GetAnzaSeeingCoverRGBA(generatedString, timeToSendForSeeing);
+                var anzaSeeingCover = CloudData.SeeingCoverData(anzaSeeingColor);
 
                 if ((i + 4) == 24 || (i + 4) == 48)
                 {
@@ -97,7 +116,9 @@ namespace AstroPhotographyAPI.Controllers
                     TransparencyCover = transparencyCover.Item2,
                     TransparencyRGBa= transparencyCover.Item1,
                     CloudCover = cloudCover.Item2,
-                    RGBa = cloudCover.Item1
+                    RGBa = cloudCover.Item1,
+                    SeeingCover = anzaSeeingCover.Item2,
+                    SeeingRGBa = anzaSeeingCover.Item1
                 });
 
                 if (cloudDataJson.cloudData.ContainsKey(time.Year + "/" + time.Month + "/" + day))
@@ -116,7 +137,9 @@ namespace AstroPhotographyAPI.Controllers
                                 TransparencyCover = transparencyCover.Item2,
                                 TransparencyRGBa = transparencyCover.Item1,
                                 CloudCover = cloudCover.Item2,
-                                RGBa = cloudCover.Item1
+                                RGBa = cloudCover.Item1,
+                                SeeingCover = anzaSeeingCover.Item2,
+                                SeeingRGBa = anzaSeeingCover.Item1
                             });
                         }
                     }
@@ -134,7 +157,9 @@ namespace AstroPhotographyAPI.Controllers
                         TransparencyCover = transparencyCover.Item2,
                         TransparencyRGBa = transparencyCover.Item1,
                         CloudCover = cloudCover.Item2,
-                        RGBa = cloudCover.Item1
+                        RGBa = cloudCover.Item1,
+                        SeeingCover = anzaSeeingCover.Item2,
+                        SeeingRGBa = anzaSeeingCover.Item1
                     });
 
                     cloudDataJson.cloudData.Add((time.Year + "/" + time.Month + "/" + day), newItem);
