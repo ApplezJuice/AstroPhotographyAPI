@@ -22,6 +22,8 @@ namespace AstroPhotographyAPI.Models
         public Rgba32 RGBa { get; set; }
         public string SeeingCover { get; set; }
         public Rgba32 SeeingRGBa { get; set; }
+        public string Wind { get; set; }
+        public Rgba32 WindRGBa { get; set; }
 
         public static Rgba32 GetAnzaCloudCoverRGBA(string dateString, string time)
         {
@@ -66,16 +68,57 @@ namespace AstroPhotographyAPI.Models
             }
         }
 
+        public static Rgba32 GetWindRGBa(string dateString, string time)
+        {
+            string imagePath = GetImageFromURL($"https://weather.gc.ca/data/prog/regional/{dateString}/{dateString}_054_R1_north@america@astro_I_ASTRO_uv_0{time}.png");
+
+            using (Image<Rgba32> image = (Image<Rgba32>)Image.Load(imagePath))
+            {
+                //var size = image.Size();
+                var anzaColor = image[175, 514];
+
+                System.IO.File.Delete(imagePath);
+                return anzaColor;
+            }
+        }
+
         public static string GetImageFromURL(string url)
         {
             using (WebClient client = new WebClient())
             {
                 var imageGuid = Guid.NewGuid();
                 var imageString = "test" + imageGuid.ToString() + ".png";
-                client.DownloadFile(new Uri(url), imageString);
+                try
+                {
+                    client.DownloadFile(new Uri(url), imageString);
+                }
+                catch (WebException wex)
+                {
+                    if (((HttpWebResponse) wex.Response).StatusCode == HttpStatusCode.NotFound)
+                    {
+                        return ("404 - " + url);
+                    }
+                }
 
                 return imageString;
             }
+        }
+
+        public static Tuple<Rgba32, string> WindData(Rgba32 input)
+        {
+            Dictionary<Rgba32, string> colorLegend = new Dictionary<Rgba32, string>();
+
+            colorLegend.Add(new Rgba32(254, 254, 254, 255), ">45 mph");
+            colorLegend.Add(new Rgba32(198, 198, 198, 255), "29-45 mph");
+            colorLegend.Add(new Rgba32(148, 212, 212, 255), "17-28 mph");
+            colorLegend.Add(new Rgba32(98, 162, 226, 255), "12-16 mph");
+            colorLegend.Add(new Rgba32(43, 107, 171, 255), "6-11 mph");
+            colorLegend.Add(new Rgba32(0, 62, 126, 255), "0-5 mph");
+
+            string value;
+            colorLegend.TryGetValue(input, out value);
+
+            return Tuple.Create(input, value);
         }
 
         public static Tuple<Rgba32, string> TransparencyCoverData(Rgba32 input)

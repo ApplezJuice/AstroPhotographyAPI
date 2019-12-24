@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
 using System.Threading.Tasks;
 using AstroPhotographyAPI.Models;
 using Microsoft.AspNetCore.Cors;
@@ -9,8 +8,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
 
 namespace AstroPhotographyAPI.Controllers
 {
@@ -79,24 +76,37 @@ namespace AstroPhotographyAPI.Controllers
                 {
                     timeForSeeing -= 3;
                     timeToSendForSeeing = timeForSeeing.ToString();
+
+                    if (timeForSeeing < 10)
+                    {
+                        timeToSendForSeeing = "0" + timeToSendForSeeing;
+                    }
                 }
                 else
                 {
                     // not in the 3 hour block
                     var timeToRemove = timeForSeeing % 3;
                     timeToSendForSeeing = ((timeForSeeing - timeToRemove) - 3).ToString();
+
+                    if (((timeForSeeing - timeToRemove) -3) < 10)
+                    {
+                        timeToSendForSeeing = "0" + timeToSendForSeeing;
+                    }
                 }
 
                 if (i < 10)
                 {
                     timeToGet = "0" + i.ToString();
-                    timeToSendForSeeing = "0" + timeToSendForSeeing;
                 }
 
                 var anzaColor = CloudData.GetAnzaCloudCoverRGBA(generatedString, timeToGet);
                 var cloudCover = CloudData.CloudCoverData(anzaColor);
+
                 var anzaTransparencyColor = CloudData.GetAnzaTransparencyCoverRGBA(generatedString, timeToGet);
                 var transparencyCover = CloudData.TransparencyCoverData(anzaTransparencyColor);
+
+                var anzaWindColor = CloudData.GetWindRGBa(generatedString, timeToGet);
+                var windData = CloudData.WindData(anzaWindColor);
 
                 var anzaSeeingColor = CloudData.GetAnzaSeeingCoverRGBA(generatedString, timeToSendForSeeing);
                 var anzaSeeingCover = CloudData.SeeingCoverData(anzaSeeingColor);
@@ -118,7 +128,9 @@ namespace AstroPhotographyAPI.Controllers
                     CloudCover = cloudCover.Item2,
                     RGBa = cloudCover.Item1,
                     SeeingCover = anzaSeeingCover.Item2,
-                    SeeingRGBa = anzaSeeingCover.Item1
+                    SeeingRGBa = anzaSeeingCover.Item1,
+                    Wind = windData.Item2,
+                    WindRGBa = windData.Item1
                 });
 
                 if (cloudDataJson.cloudData.ContainsKey(time.Year + "/" + time.Month + "/" + day))
@@ -139,7 +151,9 @@ namespace AstroPhotographyAPI.Controllers
                                 CloudCover = cloudCover.Item2,
                                 RGBa = cloudCover.Item1,
                                 SeeingCover = anzaSeeingCover.Item2,
-                                SeeingRGBa = anzaSeeingCover.Item1
+                                SeeingRGBa = anzaSeeingCover.Item1,
+                                Wind = windData.Item2,
+                                WindRGBa = windData.Item1
                             });
                         }
                     }
@@ -159,7 +173,9 @@ namespace AstroPhotographyAPI.Controllers
                         CloudCover = cloudCover.Item2,
                         RGBa = cloudCover.Item1,
                         SeeingCover = anzaSeeingCover.Item2,
-                        SeeingRGBa = anzaSeeingCover.Item1
+                        SeeingRGBa = anzaSeeingCover.Item1,
+                        Wind = windData.Item2,
+                        WindRGBa = windData.Item1
                     });
 
                     cloudDataJson.cloudData.Add((time.Year + "/" + time.Month + "/" + day), newItem);
@@ -174,13 +190,6 @@ namespace AstroPhotographyAPI.Controllers
 
             // write string to file
             System.IO.File.WriteAllText("cloudData.json", json);
-
-            List<string> listOfData = new List<string>();
-
-            foreach (var item in _data)
-            {
-                listOfData.Add(item.Month.ToString() + "/" + item.Day.ToString() + "/" + item.Year.ToString() + " - " + "Time: " + item.Hour + " - " + item.CloudCover);
-            }
 
             return Ok(cloudDataJson.cloudData);
         }
