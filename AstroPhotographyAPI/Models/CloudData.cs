@@ -125,7 +125,7 @@ namespace AstroPhotographyAPI.Models
         {
             Dictionary<Rgba32, string> colorLegend = new Dictionary<Rgba32, string>();
 
-            colorLegend.Add(new Rgba32(254, 254, 254, 255), "Too Cloudy to forcast");
+            colorLegend.Add(new Rgba32(254, 254, 254, 255), "Too Cloudy to forecast");
             colorLegend.Add(new Rgba32(198, 198, 198, 255), "Poor");
             colorLegend.Add(new Rgba32(148, 212, 212, 255), "Below Average");
             colorLegend.Add(new Rgba32(98, 162, 226, 255), "Average");
@@ -142,7 +142,7 @@ namespace AstroPhotographyAPI.Models
         {
             Dictionary<Rgba32, string> colorLegend = new Dictionary<Rgba32, string>();
 
-            colorLegend.Add(new Rgba32(254, 254, 254, 255), "Too Cloudy to forcast");
+            colorLegend.Add(new Rgba32(254, 254, 254, 255), "Too Cloudy to forecast");
             colorLegend.Add(new Rgba32(198, 198, 198, 255), "Bad");
             colorLegend.Add(new Rgba32(148, 212, 212, 255), "Poor");
             colorLegend.Add(new Rgba32(98, 162, 226, 255), "Average");

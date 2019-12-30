@@ -30,21 +30,44 @@ namespace AstroPhotographyAPI.Controllers
         }
 
         [EnableCors("AllowOrigin")]
-        [HttpPost("/api/v1/UploadPhoto")]
-        public async Task<IActionResult> UploadPhoto(IFormFile file)
+        [HttpGet("/api/v1/GetImage/{fileName}")]
+        public async Task<IActionResult> GetSpecificImage(string fileName)
+        {
+            var imageToReturn = await _dbcontext.Photos.FirstOrDefaultAsync(x => x.PhotoPath == fileName);
+            //var photoToReturn = _dbcontext.Photos.Find(id);
+            var imageLoc = "Resources/Images/" + imageToReturn.PhotoPath;
+            var image = System.IO.File.OpenRead(imageLoc);
+            return File(image, "image/jpeg");
+        }
+
+        [EnableCors("AllowOrigin")]
+        [HttpPost("/api/v1/UploadPhoto"), DisableRequestSizeLimit]
+        public async Task<IActionResult> UploadPhoto([FromForm(Name = "file")]IFormFile file)
         {
             if (file != null)
             {
                 var folderName = Path.Combine("Resources", "Images");
                 var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+                var filepath = Path.Combine(pathToSave, file.FileName);
 
-                using (var stream = new FileStream(pathToSave, FileMode.Create))
+                using (var stream = new FileStream(filepath, FileMode.Create))
                 {
                     await file.CopyToAsync(stream);
                 }
+                //var inputstr = "Resources\\Images";
+
+                //var returnStr = Path.Combine(inputstr,file.FileName);
+
+                _dbcontext.Photos.Add(new DBPhoto
+                {
+                    PhotoPath = file.FileName
+                }); 
+                _dbcontext.SaveChangesAsync();
+
+                return Ok();
             }
 
-            return Ok();
+            return BadRequest("Error uploading phoot");
         }
 
         [EnableCors("AllowOrigin")]
