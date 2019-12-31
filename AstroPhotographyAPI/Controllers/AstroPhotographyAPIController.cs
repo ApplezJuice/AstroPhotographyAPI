@@ -23,6 +23,46 @@ namespace AstroPhotographyAPI.Controllers
         }
 
         [EnableCors("AllowOrigin")]
+        [HttpPost("/api/v1/UpdatePhotoInfo")]
+        public async Task<IActionResult> UpdateItem([FromBody]DBPhoto photo)
+        {
+            var itemToUpdate = await _dbcontext.Photos.FirstOrDefaultAsync(x =>
+                x.PhotoPath == photo.PhotoPath);
+
+            if (itemToUpdate != null)
+            {
+                itemToUpdate.Description = photo.Description;
+                itemToUpdate.Filters = photo.Filters;
+                itemToUpdate.GuideCamera = photo.GuideCamera;
+                itemToUpdate.GuideScope = photo.GuideScope;
+                itemToUpdate.MainCamera = photo.MainCamera;
+                itemToUpdate.MainTelescope = photo.MainTelescope;
+                itemToUpdate.Mount = photo.Mount;
+                itemToUpdate.Other = photo.Other;
+                itemToUpdate.PhotoLocation = photo.PhotoLocation;
+                itemToUpdate.PhotoName = photo.PhotoName;
+
+                await _dbcontext.SaveChangesAsync();
+                return Ok("Item " + itemToUpdate.PhotoPath + " has been updated.");
+            }
+
+            return BadRequest("Item not in the DB");
+        }
+
+        [EnableCors("AllowOrigin")]
+        [HttpGet("/api/v1/RemovePhoto/{id}")]
+        public async Task<IActionResult> RemovePhotoFromDb(int id)
+        {
+            var itemToRemove = await _dbcontext.Photos.FindAsync(id);
+            if (itemToRemove != null)
+            {
+                _dbcontext.Photos.Remove(itemToRemove);
+            }
+            
+            return BadRequest("Item not in the DB");
+        }
+
+        [EnableCors("AllowOrigin")]
         [HttpGet("/api/v1/GetAllPhotos")]
         public async Task<ActionResult<IEnumerable<DBPhoto>>> GetAllItems()
         {
@@ -62,7 +102,7 @@ namespace AstroPhotographyAPI.Controllers
                 {
                     PhotoPath = file.FileName
                 }); 
-                _dbcontext.SaveChangesAsync();
+                await _dbcontext.SaveChangesAsync();
 
                 return Ok();
             }
