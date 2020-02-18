@@ -32,6 +32,7 @@ namespace AstroPhotographyAPI.Controllers
             if (itemToUpdate != null)
             {
                 itemToUpdate.Description = photo.Description;
+                itemToUpdate.DateAndTime = photo.DateAndTime;
                 itemToUpdate.Filters = photo.Filters;
                 itemToUpdate.GuideCamera = photo.GuideCamera;
                 itemToUpdate.GuideScope = photo.GuideScope;

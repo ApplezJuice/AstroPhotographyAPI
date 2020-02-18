@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AstroPhotographyAPI.Migrations
 {
-    public partial class test : Migration
+    public partial class New : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,6 +15,7 @@ namespace AstroPhotographyAPI.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     PhotoName = table.Column<string>(nullable: true),
                     PhotoLocation = table.Column<string>(nullable: true),
+                    DateAndTime = table.Column<DateTime>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     PhotoPath = table.Column<string>(nullable: true),
                     MainCamera = table.Column<string>(nullable: true),
