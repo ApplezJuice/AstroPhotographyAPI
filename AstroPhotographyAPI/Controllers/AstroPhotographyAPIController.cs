@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.ImageSharp.Processing;
 
 namespace AstroPhotographyAPI.Controllers
 {
@@ -22,7 +25,7 @@ namespace AstroPhotographyAPI.Controllers
             _dbcontext = context;
         }
 
-        [EnableCors("AllowOrigin")]
+        [ServiceFilter(typeof(AuthorizeIPAddress))]
         [HttpPost("/api/v1/UpdatePhotoInfo")]
         public async Task<IActionResult> UpdateItem([FromBody]DBPhoto photo)
         {
@@ -42,6 +45,7 @@ namespace AstroPhotographyAPI.Controllers
                 itemToUpdate.Other = photo.Other;
                 itemToUpdate.PhotoLocation = photo.PhotoLocation;
                 itemToUpdate.PhotoName = photo.PhotoName;
+                itemToUpdate.PhotoType = photo.PhotoType;
 
                 await _dbcontext.SaveChangesAsync();
                 return Ok("Item " + itemToUpdate.PhotoPath + " has been updated.");
@@ -50,7 +54,7 @@ namespace AstroPhotographyAPI.Controllers
             return BadRequest("Item not in the DB");
         }
 
-        [EnableCors("AllowOrigin")]
+        [ServiceFilter(typeof(AuthorizeIPAddress))]
         [HttpGet("/api/v1/RemovePhoto/{id}")]
         public async Task<IActionResult> RemovePhotoFromDb(int id)
         {
@@ -74,6 +78,15 @@ namespace AstroPhotographyAPI.Controllers
         [HttpGet("/api/v1/GetImage/{fileName}")]
         public async Task<IActionResult> GetSpecificImage(string fileName)
         {
+            if (fileName.Contains("thumb"))
+            {
+                var imageToReturnThumb = await _dbcontext.Photos.FirstOrDefaultAsync(x => x.PhotoThumbnail == fileName);
+                //var photoToReturn = _dbcontext.Photos.Find(id);
+                var imageLocThumb = "Resources/Images/" + imageToReturnThumb.PhotoPath;
+                var imageThumb = System.IO.File.OpenRead(imageLocThumb);
+                return File(imageThumb, "image/jpeg");
+            }
+
             var imageToReturn = await _dbcontext.Photos.FirstOrDefaultAsync(x => x.PhotoPath == fileName);
             //var photoToReturn = _dbcontext.Photos.Find(id);
             var imageLoc = "Resources/Images/" + imageToReturn.PhotoPath;
@@ -81,7 +94,7 @@ namespace AstroPhotographyAPI.Controllers
             return File(image, "image/jpeg");
         }
 
-        [EnableCors("AllowOrigin")]
+        [ServiceFilter(typeof(AuthorizeIPAddress))]
         [HttpPost("/api/v1/UploadPhoto"), DisableRequestSizeLimit]
         public async Task<IActionResult> UploadPhoto([FromForm(Name = "file")]IFormFile file)
         {
@@ -95,13 +108,27 @@ namespace AstroPhotographyAPI.Controllers
                 {
                     await file.CopyToAsync(stream);
                 }
+
+                using (var stream = file.OpenReadStream())
+                {
+                    var thumbPath = Path.Combine(pathToSave, "thumb" + file.FileName);
+                    using (Image image = Image.Load(stream))
+                    {
+                        image.Mutate(x => x
+                             .Resize(image.Width / 5, image.Height / 5)
+                         );
+                        image.Save(thumbPath); // Automatic encoder selected based on extension.
+                    }
+                }
+
                 //var inputstr = "Resources\\Images";
 
                 //var returnStr = Path.Combine(inputstr,file.FileName);
 
                 _dbcontext.Photos.Add(new DBPhoto
                 {
-                    PhotoPath = file.FileName
+                    PhotoPath = file.FileName,
+                    PhotoThumbnail = "thumb" + file.FileName
                 }); 
                 await _dbcontext.SaveChangesAsync();
 
@@ -111,7 +138,7 @@ namespace AstroPhotographyAPI.Controllers
             return BadRequest("Error uploading phoot");
         }
 
-        [EnableCors("AllowOrigin")]
+        [ServiceFilter(typeof(AuthorizeIPAddress))]
         [HttpGet("/api/v1/GenerateCloudData")]
         public async Task<IActionResult> GenCloudData()
         {

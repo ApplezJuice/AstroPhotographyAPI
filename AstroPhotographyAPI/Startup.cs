@@ -8,6 +8,7 @@ using Microsoft.OpenApi.Models;
 using AstroPhotographyAPI.Models;
 using Microsoft.EntityFrameworkCore.Sqlite;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
+using Microsoft.Extensions.Options;
 
 namespace AstroPhotographyAPI
 {
@@ -31,6 +32,13 @@ namespace AstroPhotographyAPI
                 //WithOrigins("http://localhost:1337"
             });
 
+            services.Configure<IPWhitelistConfiguration>(
+                this._config.GetSection("IPAddressWhitelistConfiguration"));
+            services.AddSingleton<IIPWhitelistConfiguration>(
+                resolver => resolver.GetRequiredService<IOptions<IPWhitelistConfiguration>>().Value);
+
+            services.AddScoped<AuthorizeIPAddress>();
+
             //services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(_config.GetConnectionString("PhotoDBConnection")));
             services.AddDbContextPool<AppDbContext>(options => options.UseSqlite("Data Source=Photos.db"));
 
@@ -42,6 +50,8 @@ namespace AstroPhotographyAPI
             });
 
             services.AddScoped<IPhoto, SQLPhotoRepository>();
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
